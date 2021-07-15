@@ -1,6 +1,7 @@
 FROM centos:centos6
 LABEL maintainer="joe@rstudio.com"
 
+RUN sed -i '/^mirrorlist/s/^/#/;/^#baseurl/{s/#//;s/mirror.centos.org\/centos\/$releasever/vault.centos.org\/6.10/}' /etc/yum.repos.d/*B*
 RUN yum -y install centos-release-scl
 RUN yum -y install python27
 RUN yum -y install devtoolset-7
